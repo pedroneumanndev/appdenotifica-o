@@ -1,0 +1,65 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="description" content="PWA da Skaley para disparo de notificações" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon.svg" />
+    <title>Skaley</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="control-panel">
+        <h1>Disparo de Notificações</h1>
+        <p>Defina quantas vendas simular e os valores de cada notificação.</p>
+
+        <form id="salesForm">
+          <label>
+            Quantidade de notificações
+            <input id="count" type="number" min="1" max="200" value="5" required />
+          </label>
+
+          <label>
+            Intervalo entre notificações (segundos)
+            <input id="interval" type="number" min="1" max="3600" value="8" required />
+          </label>
+
+          <label>
+            Valores de venda (um por linha, em R$)
+            <textarea id="values" rows="6" placeholder="37,81&#10;57,65&#10;89,90"></textarea>
+          </label>
+
+          <label>
+            Som de notificação
+            <input id="soundEnabled" type="checkbox" checked />
+          </label>
+
+          <div class="actions">
+            <button id="permissionBtn" type="button">Ativar notificações</button>
+            <button id="startBtn" type="submit">Iniciar disparo</button>
+            <button id="stopBtn" type="button" class="ghost">Parar</button>
+          </div>
+        </form>
+
+        <p class="status" id="status">Pronto para iniciar.</p>
+      </section>
+
+      <section class="phone-preview" aria-label="Prévia da central de notificações">
+        <div class="phone-header">
+          <span>Central de Notificações</span>
+          <small id="clock"></small>
+        </div>
+        <div id="notificationList" class="notification-list"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
